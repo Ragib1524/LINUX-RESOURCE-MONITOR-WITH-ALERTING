@@ -1,0 +1,29 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.so.*
+linux-resource-monitor
+build/
+bin/
+obj/
+
+# Debug/sanitizer artifacts
+*.out
+core
+core.*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs (keep the directory, ignore contents)
+logs/*.log
+logs/*.csv
+
+# OS files
+.DS_Store
+Thumbs.db

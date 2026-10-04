@@ -1,0 +1,23 @@
+[Unit]
+Description=Linux Resource Monitor with Alerting
+Documentation=file:///usr/local/share/doc/linux-resource-monitor/README.md
+After=network.target
+
+[Service]
+Type=simple
+# Runs as a non-root user; reading /proc and /sys does not require root.
+User=nobody
+# The working directory must contain the config and logs directories,
+# or use absolute paths in the configuration file.
+WorkingDirectory=/usr/local/etc/linux-resource-monitor
+ExecStart=/usr/local/bin/linux-resource-monitor --config /usr/local/etc/linux-resource-monitor/monitor.conf
+Restart=on-failure
+RestartSec=5
+# Basic hardening (read-only filesystem except for the log directory).
+ProtectSystem=full
+ReadWritePaths=/var/log/linux-resource-monitor
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
